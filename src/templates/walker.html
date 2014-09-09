@@ -15,7 +15,7 @@
         
         var Walker = function() {  
             this.x = window.innerWidth / 2;
-            this.y = window.innerWidth / 2;
+            this.y = window.innerHeight / 2;
             this.radius = 10;
             this.frameRate = 1000/30;
         };
@@ -24,7 +24,7 @@
             canvas = document.getElementById('canvas');  
             context = canvas.getContext('2d');  
             canvas.width = window.innerWidth;  
-            canvas.height = window.innerWidth;
+            canvas.height = window.innerHeight;
             context.beginPath();
             context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
             context.fillStyle = 'black';
@@ -32,7 +32,11 @@
         }
 
         Walker.prototype.walk = function() {
-                this.x++;
+                if(this.y > 0) {
+                    this.y--;
+                } else {
+                    this.y++;
+                } 
         }
 
         Walker.prototype.animate = function() {
