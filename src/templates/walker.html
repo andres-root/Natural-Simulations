@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Demo Processing</title>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="/static/js/processing.min.js"></script>
+    <title>Demo Processing</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/static/js/processing.min.js"></script>
 </head>
 <body>
-	<canvas id="canvas" width="200" height="200"></canvas>
-	<script type="text/javascript">
-		
-		var canvas = null;
-		var context = null;
-		var frame 	= 0;
-		
-		var Walker = function() {  
-			this.x = window.innerWidth / 2;
-    		this.y = window.innerWidth / 2;
-	    	this.radius = 1;
-	    	this.frameRate = 1000/30;
-		};
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <script type="text/javascript">
+        
+        var canvas = null;
+        var context = null;
+        var frame   = 0;
+        
+        var Walker = function() {  
+            this.x = window.innerWidth / 2;
+            this.y = window.innerWidth / 2;
+            this.radius = 1;
+            this.frameRate = 1000/30;
+        };
 
-		Walker.prototype.setup = function() {
-			canvas = document.getElementById('canvas');  
-		    context = canvas.getContext('2d');  
-		    canvas.width = window.innerWidth;  
-		    canvas.height = window.innerWidth;
-			context.beginPath();
-	     	context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-	    	context.fillStyle = 'black';
-	    	context.fill();
-		}
+        Walker.prototype.setup = function() {
+            canvas = document.getElementById('canvas');  
+            context = canvas.getContext('2d');  
+            canvas.width = window.innerWidth;  
+            canvas.height = window.innerWidth;
+            context.beginPath();
+            context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'black';
+            context.fill();
+        }
 
-		Walker.prototype.walk = function() {
-			r =  Math.random();
-			alert(r);
-			if (r < 0.1) {
-			    this.x++;
-			} else if (r < 0.2) {
-			    this.x--;
-			} else if (r < 0.4) {
-			    this.y++;
-			} else {
-				this.y--;
-			}
-		}
+        Walker.prototype.walk = function() {
+            r =  Math.random();
+            alert(r);
+            if (r < 0.1) {
+                this.x++;
+            } else if (r < 0.2) {
+                this.x--;
+            } else if (r < 0.4) {
+                this.y++;
+            } else {
+                this.y--;
+            }
+        }
 
-		Walker.prototype.animate = function() {
-			this.walk();
-			this.setup();
-		}
+        Walker.prototype.animate = function() {
+            this.walk();
+            this.setup();
+        }
 
-		w = new Walker();
+        w = new Walker();
 
-		var run = function(){
-			setInterval(w.animate(), 100)
-		};
-		run();
-	   </script>	
-	</script>
+        var run = function(){
+            setInterval(w.animate(), 100)
+        };
+        run();
+       </script>    
+    </script>
 </body>
 </html>
