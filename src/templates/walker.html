@@ -16,19 +16,19 @@
         var Walker = function() {  
             this.x = window.innerWidth / 2;
             this.y = window.innerHeight / 2;
-            this.radius = 3;
+            this.radius = 1;
             this.frameRate = 1000/30;
+            this.canvas = document.getElementById('canvas');  
+            this.context = this.canvas.getContext('2d');
+            this.canvas.width = window.innerWidth;
+            this.canvas.height = window.innerHeight; 
         };
 
         Walker.prototype.setup = function() {
-            canvas = document.getElementById('canvas');  
-            context = canvas.getContext('2d');  
-            canvas.width = window.innerWidth;  
-            canvas.height = window.innerHeight;
-            context.beginPath();
-            context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-            context.fillStyle = 'black';
-            context.fill();
+            this.context.beginPath();
+            this.context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+            this.context.fillStyle = 'black';
+            this.context.fill();
         }
 
         Walker.prototype.walk = function() {
@@ -51,7 +51,7 @@
 
         var run = function(){
             w = new Walker();
-            setInterval(function(){w.animate()}, this.frameRate);
+            setInterval(function(){w.animate()}, w.frameRate);
         };
         run();
     </script>
