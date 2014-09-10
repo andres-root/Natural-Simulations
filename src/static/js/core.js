@@ -1,6 +1,3 @@
-var canvas = null;
-var context = null;
-var frame   = 0;
 
 var Walker = function() {  
     this.x = window.innerWidth / 2;
